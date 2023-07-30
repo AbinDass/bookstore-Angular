@@ -1,0 +1,24 @@
+<div class=" w-full flex flex-wrap justify-center p-5 gap-10">
+
+<div *ngFor="let book of newBooks" class="bg-white shadow-lg rounded-lg overflow-hidden w-[333px]">
+    <div class="h-[390px] flex flex-col justify-center">
+        <img
+          src={{book.image}}
+          alt="Placeholder Image"
+          class="w-full h-60 object-cover px-10"
+        >
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">{{book.title}}</h2>
+          <p class="text-gray-700">{{book.subtitle}}</p>
+          <p class="text-gray-700">{{book.price}}</p>
+        </div>
+    </div>
+
+    <div class="p-2 flex justify-around">
+        <button class="capitalize bg-yellow-500/40 p-2 my-2 rounded-md w-32 hover:bg-yellow-500 hover:text-white">buy now </button>
+        <button class="capitalize bg-yellow-500/40 p-2 my-2 rounded-md w-32 hover:bg-yellow-500 hover:text-white"> add to cart</button>
+    </div>
+  </div>
+  
+
+  </div>
