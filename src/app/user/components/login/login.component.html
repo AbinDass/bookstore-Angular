@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<div class="logincontainer w-full  md:flex  justify-evenly  p-10">
+   <form class="login  w-full flex justify-center" [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+        <div class="flex-col flex py-10">
+            <h1 class="capitalize text-4xl text-black/60 text-start font-semibold">login</h1>
+
+            <label for="email" class="email-label capitalize py-5"> email </label>
+            <input type="text" formControlName="emailid" placeholder="john@gmail.com" class="email-input border-2 md:w-[300px] border-black px-5">
+
+            <div class="emailError">
+                {{checkLoginErrors()}}
+                    <p class="text-red-600">{{emailError}}</p>
+            </div>
+
+            <label for="password" class="password-label capitalize py-5"> password </label>
+            <input type="text" formControlName="password" placeholder="password" class="password-input border-2 md:w-[300px] border-black px-5">
+                <div class="passwordError">
+                    {{checkLoginErrors()}}
+                        <p class="text-red-600">{{passwordError}}</p>
+                </div>
+                <button type="submit" [disabled]="loginForm.invalid" class="disabled:cursor-not-allowed bg-black/70 mt-5 w-32 text-white h-8 hover:bg-black">Log In</button>
+        </div>
+    </form>
+   <div class="register w-full py-5">
+        <div class="container bg-slate-500/20" >
+           <div class=" flex flex-col px-20 py-10 gap-4">
+            <h1 class="font-semibold text-left text-2xl">New to Bookstore?</h1>
+            <h1 class="flex flex-col "><span class="font-semibold">Widest selection in Singapore</span>
+                <span>Over 10 million quality books</span></h1>
+            <h1 class="flex flex-col"><span class="font-semibold">Convenient browsing and purchasing</span>
+                <span> Opens 24/7, buy books anytime </span></h1>
+            <h1 class="flex flex-col"><span class="font-semibold">Quick and local delivery</span>
+                <span> Books sent with tracking number, local courier </span></h1>
+
+                <button routerLink="/register" class=" mt-5 w-36  h-10 border-2 border-black bg-white ">Register</button>
+           </div>
+        </div>
+
+
+   </div>
+</div>
+<app-footer></app-footer>

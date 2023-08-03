@@ -11,7 +11,14 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './userState/auth/auth.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { authEffects } from './userState/auth/auth.effects';
+import { ErrorComponent } from './components/error/error.component';
+import { BookdetailComponent } from './components/bookdetail/bookdetail.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -23,11 +30,19 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     FooterComponent,
+    ErrorComponent,
+    BookdetailComponent,
+    CartComponent,
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+
+    StoreModule.forFeature('userAuthentication', authReducer),
+    EffectsModule.forFeature([authEffects])
   ]
 })
 export class UserModule { }

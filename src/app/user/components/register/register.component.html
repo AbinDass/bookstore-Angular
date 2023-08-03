@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+<div class="md:flex w-full justify-center items-center p-3 gap-10">
+    <div class="w-full p-2 flex flex-col justify-center gap-3">
+        <h1 class="text-2xl">"A room without books is like a body without a soul."  - Marcus Tullius Cicero</h1>
+        <h1 class="text-2xl">"Books are a uniquely portable magic." - Stephen King</h1>
+    </div>
+    <form action="" class="py-3 w-full" [formGroup]="registerForm" (ngSubmit)="submitRegisterForm()">
+        <h1 class="capitalize font-medium text-3xl">be a member</h1>
+        <div class="py-10 flex flex-col gap-5">
+            <div class="fullname gap-2 flex flex-col">
+                <label for="fullname" class="capitalize"> fullname </label>
+                <input formControlName="fullname" placeholder="full name" type="text" class="border-2 border-black/50 md:w-[400px] px-10">
+                <div>
+                    {{registorErrors()}} <p class="text-red-600">{{error.fullname}}</p>
+                </div>
+            </div>
+
+            <div class="email gap-2 flex flex-col">
+                <label for="email" class="capitalize"> email</label>
+                <input formControlName="emailid" placeholder="e-mail" type="text" class="border-2 border-black/50 md:w-[400px] px-10">
+                <div>
+                    {{registorErrors()}} <p class="text-red-600">{{error.emailid}}</p>
+                </div>
+            </div>
+
+            <div class="phone gap-2 flex flex-col">
+                <label for="phone" class="capitalize"> phone</label>
+                <input formControlName="phone" placeholder="phone" type="text" class="border-2 border-black/50 md:w-[400px] px-10">
+                <div>
+                    {{registorErrors()}} <p class="text-red-600">{{error.phone}}</p>
+                </div>
+            </div>
+
+            <div class="password gap-2 flex flex-col">
+                <label for="password" class="capitalize"> password</label>
+                <input formControlName="password" placeholder="password" type="password" class="border-2 border-black/50 md:w-[400px] px-10">
+                <div>
+                    {{registorErrors()}} <p class="text-red-600">{{error.password}}</p>
+                </div>
+            </div>
+
+            <div class="confirmpassword gap-2 flex flex-col">
+                <label for="confirmpassword" class="capitalize"> confirm password</label>
+                <input formControlName="confirmPassword" placeholder="confirm password" type="password" class="border-2 border-black/50 md:w-[400px] px-10">
+                <div>
+                    {{registorErrors()}} <p class="text-red-600">{{error.confirmPassword}}</p>
+                </div>
+            </div>
+
+            <div>
+                <button [disabled]="registerForm.invalid" class="disabled:cursor-not-allowed bg-black/70 mt-5 w-32 text-white h-8 hover:bg-black capitalize">register</button>
+            </div>
+        </div>
+    </form>
+</div>
+<app-footer></app-footer>

@@ -3,7 +3,10 @@
         <div class="md:py-1 bg-green-500/20  hidden sm:flex justify-around md:px-20 gap-5">
             <marquee behavior="" direction="" class="w-full"><p>All indian based books , 15 million titles - 7-day local delivery - trackable</p></marquee>
             <div class="  w-full gap-5 flex justify-end">
-               <p class="cursor-pointer underline" routerLink="login"> login/register </p>
+               <p *ngIf="!isAuth else logout" class="cursor-pointer underline" routerLink="/login"> login/register </p>
+               <ng-template #logout>
+                    <p (click)="logOut()" class="cursor-pointer underline" > logOut </p>
+               </ng-template>
                <p class="cursor-pointer underline"> my account </p>
             </div>
         </div>
