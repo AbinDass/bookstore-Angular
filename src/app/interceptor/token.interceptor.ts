@@ -14,7 +14,7 @@ export class TokenInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token  = window.localStorage.getItem('token');
     console.log(token)
-    if(request.url.includes('http://localhost')){
+    if(request.url.includes('https://bookstore-97be.onrender.com/api')){
     request = request.clone({
       setHeaders:{
         Authorization:token || ''
