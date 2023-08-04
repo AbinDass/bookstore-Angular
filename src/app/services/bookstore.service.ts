@@ -8,7 +8,7 @@ import { cart } from '../user/model/cartState';
 
 export class BookstoreService {
   baseurl = 'https://api.itbook.store/1.0'
-  url = 'http://localhost:8000/api';
+  url = 'https://bookstore-97be.onrender.com/api';
 
   constructor(private http:HttpClient) { }
   private cartCount = new Subject <number>();
@@ -19,7 +19,7 @@ export class BookstoreService {
   getcount():Observable<number>{
     return this.cartCount
   }
-  
+
   getnewBooks(): Observable<any> {
    return  this.http.get(this.baseurl+'/new')
   }
