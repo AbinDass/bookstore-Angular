@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+
+<div class="container mx-auto mt-8 p-10" >
+    <h1 class="text-3xl md:text-4xl font-bold mb-8">Your Cart</h1>
+  
+    <div class="overflow-x-auto">
+      <table class="w-full bg-white shadow-md rounded-lg">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="py-4 px-6 text-left font-semibold">Product</th>
+            <th class="py-4 px-6 text-left font-semibold">title</th>
+            <th class="py-4 px-6 text-left font-semibold">Description</th>
+            <th class="py-4 px-6 text-center font-semibold">Price</th>
+            <th class="py-4 px-6 text-center font-semibold">Quantity</th>
+            <th class="py-4 px-6 text-center font-semibold">Total</th>
+            <th class="py-4 px-6 text-center font-semibold">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Cart Item 1 -->
+          <tr *ngFor="let list of lists;let i = index" >
+            <td class="py-4 px-6 border-b border-gray-200">
+                <img src={{list.image}} alt="" class="h-36 w-36">
+            </td>
+            <td class="py-4 px-6 border-b border-gray-200">{{list.title}}</td>
+            <td class="py-4 px-6 border-b border-gray-200">{{list.subtitle}}</td>
+            <td class="py-4 px-6 text-center border-b border-gray-200">{{list.price | currencyConvert:quantity[i] |  currency:'INR':'symbol-narrow'}}</td>
+
+            <td class="py-4 px-6 text-center border-b border-gray-200">
+                <div class="flex">
+                    
+                    <button [disabled]="quantity[i]==1" type="button" (click)="decrementQuantity(i)"class="px-3 py-2 bg-red-500 text-white rounded-l-md hover:bg-red-600 focus:outline-none" >
+                      -
+                    </button>
+                    <input disabled id="quantity" [(ngModel)]="quantity[i]" class="w-16 px-3 py-2 border border-gray-300 focus:outline-none focus:ring focus:border-blue-300 text-center">
+                    <button type="button" (click)="incrementQuantity(i)" class="px-3 py-2 bg-blue-500 text-white rounded-r-md hover:bg-blue-600 focus:outline-none" >
+                        +
+                      </button>
+                </div>
+            </td>
+            <td class="py-4 px-6 text-center border-b border-gray-200">{{list.price | currencyConvert:quantity[i] |  currency:'INR':'symbol-narrow'}}</td>
+            <td class="py-4 px-6 text-center border-b border-gray-200">
+                
+              <button class="px-4 py-2 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700" (click)="removeCart(list._id)">Remove</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="mt-8 text-right">
+      <p class="text-xl font-semibold">Total:{{getTotal() | currencyConvert:1| currency:'INR':'symbol-narrow'}} </p>
+      <button class="mt-4 px-6 py-3 text-lg font-semibold bg-green-600 text-white rounded-full hover:bg-green-700">Checkout</button>
+    </div>
+  </div>
+  
+  
+
+<app-footer></app-footer>

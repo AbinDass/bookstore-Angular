@@ -9,8 +9,8 @@ import { BookstoreService } from 'src/app/services/bookstore.service';
 export class LandingComponent implements OnInit {
   constructor(private books: BookstoreService) {}
   latestBooks!: any[];
-
   ngOnInit() {
+    
     this.getNewBoooks();
   }
   //get new boooks

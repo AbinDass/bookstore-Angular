@@ -8,10 +8,18 @@ import { UserModule } from './user/user.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './interceptor/token.interceptor';
+import { CurrencyConvertPipe } from './pipes/currency-convert.pipe';
+import { TotalPipe } from './pipes/total.pipe';
+import { ToInrPipe } from './pipes/to-inr.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
+    TotalPipe,
+ 
+    
   ],
   imports: [
     BrowserModule,
@@ -24,7 +32,9 @@ import { EffectsModule } from '@ngrx/effects';
     EffectsModule.forRoot([]), 
     
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:TokenInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

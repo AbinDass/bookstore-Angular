@@ -19,6 +19,8 @@ import { authEffects } from './userState/auth/auth.effects';
 import { ErrorComponent } from './components/error/error.component';
 import { BookdetailComponent } from './components/bookdetail/bookdetail.component';
 import { CartComponent } from './components/cart/cart.component';
+import { CurrencyConvertPipe } from '../pipes/currency-convert.pipe';
+import { ToInrPipe } from '../pipes/to-inr.pipe';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { CartComponent } from './components/cart/cart.component';
     ErrorComponent,
     BookdetailComponent,
     CartComponent,
+    CurrencyConvertPipe,
+    ToInrPipe,
   ],
   imports: [
     CommonModule,

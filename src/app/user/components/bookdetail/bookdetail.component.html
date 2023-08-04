@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<div class="container mx-auto mt-8 min-h-[45vh]">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="p-20">
+        <img src={{bookData?.image}} alt="Product Image" class=" rounded shadow-lg h-96 w-96">
+      </div>
+      <div class="flex flex-col justify-center items-center ">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">{{bookData?.title}}</h1>
+        <h1 class="text-3xl md:text-3xl font-medium mb-4">{{bookData?.subtitle}}</h1>
+        <p class="text-lg text-gray-600 mb-4">{{bookData?.desc}} </p>
+        <div class="moreDetails w-full flex flex-wrap gap-2 capitalize font-medium py-20 justify-start ">
+            <p class="gap-2"><span>language : </span><span class="text-red-500">{{bookData?.language}}</span></p>
+            <p><span>publisher : </span><span class="text-red-500">{{bookData?.publisher}}</span></p>
+            <p><span>year : </span><span class="text-red-500">{{bookData?.year}}</span></p>
+            <p><span>no of pages : </span><span  class="text-red-500">{{bookData?.pages}}</span></p>
+            <p><span>rating : </span><span class="text-red-500">{{bookData?.rating}}</span></p>
+        </div>
+        <p class="text-xl font-semibold text-green-600 mb-4"><span class="text-black">Price :</span> {{bookData?.price | toInr |currency:"INR"}}</p>
+        <div class="flex gap-5 py-6">
+        <button *ngIf="isAuth" else null class="px-6 py-3 text-lg font-semibold bg-green-600 text-white rounded-full shadow-lg hover:bg-green-700"> Buy Now </button>
+        <button *ngIf="isAuth" else null class="px-6 py-3 text-lg font-semibold bg-green-600 text-white rounded-full shadow-lg hover:bg-green-700">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<app-footer></app-footer>

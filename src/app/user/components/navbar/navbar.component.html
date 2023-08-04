@@ -1,48 +1,78 @@
 <div class="navbar w-full">
-    <div class="mininav w-full text-sm font-light">
-        <div class="md:py-1 bg-green-500/20  hidden sm:flex justify-around md:px-20 gap-5">
-            <marquee behavior="" direction="" class="w-full"><p>All indian based books , 15 million titles - 7-day local delivery - trackable</p></marquee>
-            <div class="  w-full gap-5 flex justify-end">
-               <p *ngIf="!isAuth else logout" class="cursor-pointer underline" routerLink="/login"> login/register </p>
-               <ng-template #logout>
-                    <p (click)="logOut()" class="cursor-pointer underline" > logOut </p>
-               </ng-template>
-               <p class="cursor-pointer underline"> my account </p>
-            </div>
-        </div>
+  <div class="mininav w-full text-sm font-light">
+    <div
+      class="md:py-1 bg-green-500/20 hidden sm:flex justify-around md:px-20 gap-5"
+    >
+      <marquee behavior="" direction="" class="w-full"
+        ><p>
+          All indian based books , 15 million titles - 7-day local delivery -
+          trackable
+        </p></marquee
+      >
+      <div class="w-full gap-5 flex justify-end">
+        <p
+          *ngIf="!isAuth; else logout"
+          class="cursor-pointer underline font-medium"
+          routerLink="/login"
+        >
+          login/register
+        </p>
+        <ng-template #logout>
+          <p (click)="logOut()" class="cursor-pointer underline font-medium">logOut</p>
+        </ng-template>
+        <p class="cursor-pointer underline">my account</p>
+      </div>
     </div>
+  </div>
 
-    <div class="mainnav w-full  flex justify-around gap-2     px-2 md:px-10">
-            <div class="logo flex w-full justify-center py-5">
-                <h1 class="logo">
-                    <span class="font-bold text-4xl text-red-600">Book</span>
-                    <span class="font-medium text-2xl text-blue-600"> Store</span>
-                </h1>
-            </div>
-            <div class="searchbar hidden md:flex w-full justify-center py-5 ">
-                <app-searchbar></app-searchbar>
-            </div>
-            <div class="cart flex w-full justify-center py-5">
-                <h1>mycart 0</h1>
-            </div>
-            <div class="toggle block  md:hidden py-5">
-                x
-            </div>
+  <div class="mainnav w-full flex justify-around gap-2 px-2 md:px-10">
+    <div class="logo flex w-full justify-center py-5">
+      <h1 class="logo">
+        <span class="font-bold text-4xl text-red-600 cursor-pointer" routerLink="">Book</span>
+        <span class="font-medium text-2xl text-blue-600"> Store</span>
+      </h1>
     </div>
+    <div class="searchbar hidden md:flex w-full justify-center py-5">
+      <app-searchbar></app-searchbar>
+    </div>
+    <div class="cart flex w-full justify-center py-5">
+      <h1  class="cursor-pointer flex" >
+        <span *ngIf="isAuth" else outSide class="h-10 w-10"
+        routerLink="/cart"
+          ><img
+            src="data:image/png;base64,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"
+        /></span>
 
-    <div class="bg-black/10 py-1 hidden md:flex justify-center gap-32 items-center  capitalize text-sm font-thin ">
-        <div class="gap-5 flex">
-            <div class="hover:underline cursor-pointer ">my list</div>
-            <div class="hover:underline cursor-pointer ">log out</div>
-        </div>
-        <div class="flex  gap-3">
-            <div class="hover:underline cursor-pointer ">delvery-info</div>
-            <div class="hover:underline cursor-pointer ">self-collection</div>
-            <div class="hover:underline cursor-pointer ">faq</div>
-            <div class="hover:underline cursor-pointer ">contact</div>
-        </div>
+        <ng-template  #outSide>
+            <span class="h-10 w-10"
+            (click)="loginAlert()"
+          ><img
+            src="data:image/png;base64,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"
+        /></span>
+        </ng-template>
+        <span class="font-medium text-red-600">{{count}}</span>
+      </h1>
     </div>
-    <div class="navend flex flex-grow justify-center items-center bg-red-700/90">
-            <h1 class="py-2 text-white">JULY 2023 - 20% OFF STOREWIDE - HERE IN INDIA</h1>
+    <div class="toggle block md:hidden py-5">x</div>
+  </div>
+
+  <div
+    class="bg-black/10 py-1 hidden md:flex justify-center gap-32 items-center capitalize text-sm font-thin"
+  >
+    <div class="gap-5 flex">
+      <div  class="hover:underline cursor-pointer">my list</div>
+      <div *ngIf="!isAuth; else logout" class="hover:underline font-medium cursor-pointer" routerLink="/login">login</div>
     </div>
+    <div class="flex gap-3">
+      <div class="hover:underline cursor-pointer">delvery-info</div>
+      <div class="hover:underline cursor-pointer">self-collection</div>
+      <div class="hover:underline cursor-pointer">faq</div>
+      <div class="hover:underline cursor-pointer">contact</div>
+    </div>
+  </div>
+  <div class="navend flex flex-grow justify-center items-center bg-red-700/90">
+    <h1 class="py-2 text-white">
+      JULY 2023 - 20% OFF STOREWIDE - HERE IN INDIA
+    </h1>
+  </div>
 </div>
